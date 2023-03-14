@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+	<Appenders>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT">
+			<PatternLayout>
+				<Pattern>%date{dd/MM/yyyy HH:mm:ss} [%threadName] %-5level %logger - %message%n%exception</Pattern>
+			</PatternLayout>
+		</Console>
+		<RollingFile name="RollingFileAppender" fileName="${sys:user.home}/InfoSign/app.log" filePattern="${sys:user.home}/InfoSign/app-%d{yyyy-MM-dd}.log.gz">
+			<PatternLayout>
+				<Pattern>%date{dd/MM/yyyy HH:mm:ss} [%threadName] %-5level %logger - %message%n%exception</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="ALL">
+			<AppenderRef ref="ConsoleAppender" />
+			<AppenderRef ref="RollingFileAppender" />
+		</Root>
+	</Loggers>
+</Configuration>
